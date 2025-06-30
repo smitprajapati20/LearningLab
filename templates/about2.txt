@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LearningLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #003366;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --black: #000000;
+            --gray: #666;
+        }
+    
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+    
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+            color: var(--black);
+        }
+    
+        h2 {
+            font-size: 2rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 10px;
+        }
+    
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+    
+        h3 {
+            font-size: 1.5rem;
+            color: var(--black);
+        }
+    
+        .blue-text {
+            color: var(--primary-color);
+        }
+    
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-top: -15px;
+            margin-bottom: 30px;
+        }
+    
+        /* Header Section */
+        .about-header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+    
+        /* Mission Section */
+        .mission-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 60px;
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    
+        .mission-content {
+            flex: 1;
+            padding: 40px;
+            min-width: 300px;
+        }
+    
+        .mission-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            position: relative;
+        }
+    
+        .mission-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+    
+        .stats-section h2 {
+            color: white;
+        }
+    
+        .stats-section h2::after {
+            background-color: white;
+        }
+    
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+    
+        .stat-card {
+            padding: 20px;
+        }
+    
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+    
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    
+        /* Features Section */
+        .features-section {
+            margin-bottom: 60px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+    
+        .feature-card {
+            background-color: var(--light-bg);
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+    
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.1);
+        }
+    
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+    
+        /* Learning Path Section */
+        .learning-path {
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+            background-color: white;
+        }
+    
+        .path-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+    
+        .path-step {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+    
+        .path-step:hover {
+            transform: translateY(-10px);
+        }
+    
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+    
+        .path-arrow {
+            padding: 40px 15px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+    
+        /* Story Section */
+        .story-section {
+            margin-bottom: 60px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+    
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+    
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50px;
+        }
+    
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 100px;
+        }
+    
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            width: 80px;
+            padding: 5px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    
+        .timeline-content {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+    
+        /* Team Section */
+        .team-section {
+            margin-bottom: 60px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+    
+        .team-description {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+    
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+    
+        .team-member {
+            perspective: 1000px;
+            background-color: transparent;
+            cursor: pointer;
+            height: 350px;
+        }
+    
+        .team-member-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+    
+        .team-member:hover .team-member-inner {
+            transform: rotateY(180deg);
+        }
+    
+        .team-member-front, .team-member-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light-bg);
+        }
+    
+        .team-member-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+        }
+    
+        .team-member h3 {
+            margin-bottom: 5px;
+        }
+    
+        .team-member p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+    
+        .team-social {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+    
+        .team-social a {
+            color: var(--primary-color);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+    
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+            margin-bottom: 60px;
+            text-align: center;
+        }
+    
+        .testimonial-carousel {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+    
+        .testimonial {
+            display: none;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+    
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+    
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    
+        .testimonial-content {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+    
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '"';
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+    
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--primary-color);
+        }
+    
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .dot.active {
+            background-color: var(--primary-color);
+        }
+    
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+    
+        .cta-section h2 {
+            color: var(--white);
+        }
+    
+        .cta-section h2::after {
+            background-color: var(--white);
+        }
+    
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+    
+        .cta-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mission-section {
+                flex-direction: column;
+            }
+            
+            .mission-image {
+                order: -1;
+                height: 300px;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding-left: 80px;
+            }
+            
+            .timeline-year {
+                width: 60px;
+            }
+    
+            .path-step {
+                min-width: 100%;
+                margin-bottom: 30px;
+            }
+            .path-arrow {
+                transform: rotate(90deg);
+                padding: 0;
+                margin: -10px 0;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .feature-card, .team-member {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <!-- Header Section -->
+        <header class="about-header">
+            <h1>About <span class="blue-text">LearningLab</span></h1>
+            <p class="subtitle">Empowering learners through innovative education</p>
+        </header>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>We founded LearningLab with a simple goal: to make quality education accessible to everyone, everywhere. In a world where knowledge is power, we're breaking down barriers to learning by providing comprehensive, engaging, and flexible online courses.</p>
+            </div>
+            <div class="mission-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Team working together">
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <h2>By The Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Active Learners</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="350">0</div>
+                    <div class="stat-label">Courses Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="45">0</div>
+                    <div class="stat-label">Countries Reached</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2>Why Choose <span class="blue-text">LearningLab</span>?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Comprehensive Courses</h3>
+                    <p>From beginner to advanced levels, our curriculum is designed by industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-clock"></i></div>
+                    <h3>Flexible Learning</h3>
+                    <p>Learn at your own pace, on your schedule. Access courses anytime, anywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from professionals with real-world experience in their fields.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Interactive Community</h3>
+                    <p>Connect with peers and instructors through forums and discussion boards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed progress reports.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your courses on any device, desktop or mobile.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Section -->
+        <section class="learning-path">
+            <h2>Your Learning Journey</h2>
+            <div class="path-container">
+                <div class="path-step">
+                    <div class="step-icon">1</div>
+                    <h3>Explore Courses</h3>
+                    <p>Browse our catalog and find the perfect course for your goals</p>
+                </div>
+                <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="path-step">
+                    <div class="step-icon">2</div>
+                    <h3>Enroll & Learn</h3>
+                    <p>Start learning at your own pace with our structured curriculum</p>
+                </div>
+                <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="path-step">
+                    <div class="step-icon">3</div>
+                    <h3>Practice Skills</h3>
+                    <p>Apply what you learn with hands-on projects and exercises</p>
+                </div>
+                <div class="path-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="path-step">
+                    <div class="step-icon">4</div>
+                    <h3>Get Certified</h3>
+                    <p>Earn certificates to showcase your new skills</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <h2>Our Story</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Founded by a team of educators and technologists who saw the need for more accessible learning platforms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>First Courses Launched</h3>
+                        <p>Released our initial course catalog focusing on programming and professional development.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>10,000 Students</h3>
+                        <p>Reached our first major milestone of 10,000 registered learners across 50+ countries.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Platform Upgrade</h3>
+                        <p>Completely redesigned the learning experience with new interactive features.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Today</div>
+                    <div class="timeline-content">
+                        <h3>Continuing the Journey</h3>
+                        <p>Committed to expanding our course offerings and enhancing the learning experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <p class="team-description">A diverse group of educators, developers, and designers passionate about learning.</p>
+            <div class="team-grid" id="teamMembers">
+                <!-- Team members will be loaded via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        "This platform transformed my career. The courses are comprehensive and the instructors are top-notch!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Student">
+                        <div>
+                            <h4>Maria Gonzalez</h4>
+                            <p>Web Development Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "The flexibility allowed me to learn while working full-time. I've already applied skills from my courses at work."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Student">
+                        <div>
+                            <h4>James Wilson</h4>
+                            <p>Data Science Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "The community support is incredible. I've made valuable connections through the discussion forums."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Student">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>UX Design Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-dots"></div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Start Learning?</h2>
+            <p>Join thousands of students who are advancing their skills with LearnHub.</p>
+            <a href="courses.html" class="cta-button">Browse Courses</a>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Team members data
+            const teamMembers = [
+                {
+                    name: "Dr. Sarah Johnson",
+                    role: "Founder & CEO",
+                    bio: "Education specialist with 15 years of experience in curriculum development and online learning platforms.",
+                    img: "https://randomuser.me/api/portraits/women/65.jpg"
+                },
+                {
+                    name: "Michael Chen",
+                    role: "CTO",
+                    bio: "Technology expert focused on creating seamless learning experiences with over a decade in edtech.",
+                    img: "https://randomuser.me/api/portraits/men/32.jpg"
+                },
+                {
+                    name: "Emma Rodriguez",
+                    role: "Head of Instruction",
+                    bio: "Passionate educator dedicated to student success with expertise in instructional design.",
+                    img: "https://randomuser.me/api/portraits/women/44.jpg"
+                },
+                {
+                    name: "David Kim",
+                    role: "Lead Developer",
+                    bio: "Full-stack developer who builds the platforms that make our courses accessible worldwide.",
+                    img: "https://randomuser.me/api/portraits/men/22.jpg"
+                }
+            ];
+    
+            // Load team members
+            const teamGrid = document.getElementById('teamMembers');
+            
+            teamMembers.forEach(member => {
+                const memberElement = document.createElement('div');
+                memberElement.className = 'team-member';
+                memberElement.innerHTML = `
+                    <div class="team-member-inner">
+                        <div class="team-member-front">
+                            <img src="${member.img}" alt="${member.name}">
+                            <h3>${member.name}</h3>
+                            <p class="role">${member.role}</p>
+                        </div>
+                        <div class="team-member-back">
+                            <p class="bio">${member.bio}</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                teamGrid.appendChild(memberElement);
+            });
+    
+            // Animate counters
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number');
+                const speed = 200;
+                
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if(count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+    
+            // Animate elements on scroll
+            function animateOnScroll() {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                const featureCards = document.querySelectorAll('.feature-card');
+                const pathSteps = document.querySelectorAll('.path-step');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateX(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                timelineItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateX(-20px)';
+                    item.style.transition = opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s;
+                    observer.observe(item);
+                });
+                
+                featureCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = all 0.5s ease ${index * 0.1}s;
+                    observer.observe(card);
+                });
+                
+                pathSteps.forEach((step, index) => {
+                    step.style.opacity = '0';
+                    step.style.transform = 'translateY(20px)';
+                    step.style.transition = all 0.5s ease ${index * 0.2}s;
+                    observer.observe(step);
+                });
+    
+                // Stats counter
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            animateCounters();
+                            statsObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+    
+                const statsSection = document.querySelector('.stats-section');
+                if(statsSection) {
+                    statsObserver.observe(statsSection);
+                }
+            }
+    
+            // Testimonial carousel
+            function initTestimonialCarousel() {
+                const testimonials = document.querySelectorAll('.testimonial');
+                const dotsContainer = document.querySelector('.carousel-dots');
+                let currentIndex = 0;
+                
+                // Create dots
+                testimonials.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    if(index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => showTestimonial(index));
+                    dotsContainer.appendChild(dot);
+                });
+                
+                function showTestimonial(index) {
+                    testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                    const dots = document.querySelectorAll('.dot');
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    testimonials[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                }
+                
+                // Auto-rotate every 5 seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % testimonials.length;
+                    showTestimonial(currentIndex);
+                }, 5000);
+            }
+    
+            // Initialize all animations
+            animateOnScroll();
+            initTestimonialCarousel();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+<!-- {% load static %} -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="/static/css/about.css">
+    <link rel="icon" href="/static/img/logo-transparent-png.png" type="image/icon type">
+</head>
+<body>
+    <section class="about">
+        <h2>Welcome to LearningLab</h2>
+        <p>Your premier destination for E-coding learning. We're passionate about empowering individuals to unlock their coding potential and succeed in the digital age.</p>
+      </section>
+      
+      <!-- Our Story and Mission Section 
+      <section class="story-mission">
+        <div class="story">
+          <h2>Our Story</h2>
+          <p>At LearningLab, we believe that coding is the language of the future. Our team of experienced educators, developers, and industry experts came together to create a platform that makes E-coding accessible, engaging, and fun for everyone.</p>
+          <p>Our journey began with a simple idea: to provide high-quality E-coding education that's affordable, flexible, and tailored to the needs of modern learners. Today, we're proud to have helped thousands of students and professionals acquire the skills they need to succeed in the tech industry.</p>
+        </div>
+        <div class="mission">
+          <h2>Our Mission</h2>
+          <p>Our mission is to democratize access to E-coding education, empowering individuals from all walks of life to pursue their passions and create innovative solutions that transform the world.</p>
+          <ul>
+            <li><strong>Engaging:</strong> Our courses are designed to be interactive, immersive, and fun.</li>
+            <li><strong>Effective:</strong> Our expert instructors and mentors provide personalized support to ensure you achieve your goals.</li>
+            <li><strong>Affordable:</strong> We believe that quality education should be accessible to everyone, regardless of their financial means.</li>
+          </ul>
+        </div>
+      </section>
+      
+      <!-- Team Section --
+      <section class="team">
+        <h2>Our Team</h2>
+        <div class="team-member" style="width: 330px;">
+          <h3>Hanisha Vaghela</h3><br>
+          <p>&nbsp;&nbsp;Founder & CEO</p>
+        </div>
+        <div class="team-member2" style="width: 330px;">
+          <h3>Renuka Soni</h3><br>
+          <p>&nbsp;&nbsp;Lead Instructor&<br>&nbsp;Curriculum Developer</p>
+        </div>
+        <div class="team-member3" style="width: 330px;">
+          <h3>Smit Prajapati</h3><br>
+          <p>&nbsp;&nbsp;Community Manager &<br>&nbsp;&nbsp;Support Specialist</p>
+        </div>
+      </section>
+</body>
+</html> -->
